@@ -13,23 +13,34 @@
 			</header>
 			<main>
 				<div class="btn-selections">
-					<ul id="algorithms">
-						<button>Quicksort</button>
-						<button>Bubble Sort</button>
-						<button>Insertion Sort</button>
-						<button>Merge Sort</button>
-						<button>Selection Sort</button>
-						<button>Counting Sort</button>
-						<button>Radix Sort</button>
-						<button>Bucket Sort</button>
-						<button>Tim Sort</button>
-						<button>Heap Sort</button>
-					</ul>
+					<div class="algorithms">
+						<select id="algorithm-selections">
+							<option value="Quicksort">Quicksort</option>
+							<option value="Bubble Sort">Bubble Sort</option>
+							<option value="Insertion Sort">Insertion Sort</option>
+							<option value="Merge Sort">Merge Sort</option>
+							<option value="Selection Sort">Selection Sort</option>
+							<option value="Counting Sort">Counting Sort</option>
+							<option value="Radix Sort">Radix Sort</option>
+							<option value="Bucket Sort">Bucket Sort</option>
+							<option value="Tim Sort">Tim Sort</option>
+							<option value="Heap Sort">Heap Sort</option>
+						</select>
+						<button id="visualize-btn">Visualize Quicksort</button>
+					</div>
 
-					<div class="card-adjustment-btns">
-						<button>Shuffle</button>
-						<button>Size</button>
-						<button>Speed</button>
+					<div class="customization-btns">
+						<div style="display: flex; flex-direction: column; align-items: center">
+							<label for="size-slider">Size: <span id="size-value">50</span></label>
+							<input type="range" id="size-slider" min="5" max="1000" value="50" step="5" />
+						</div>
+
+						<div style="display: flex; flex-direction: column; align-items: center">
+							<label for="speed-slider">Speed: <span id="speed-value">50ms</span></label>
+							<input type="range" id="speed-slider" min="1" max="1000" value="50" step="1" />
+						</div>
+
+						<button id="shuffle-btn">Shuffle</button>
 					</div>
 				</div>
 
