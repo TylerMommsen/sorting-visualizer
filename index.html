@@ -1,13 +1,41 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite App</title>
-  </head>
-  <body>
-    <div id="app"></div>
-    <script type="module" src="/main.js"></script>
-  </body>
+	<head>
+		<meta charset="UTF-8" />
+		<link rel="icon" type="image/svg+xml" href="" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Sorting Visualizer</title>
+	</head>
+	<body>
+		<div id="app">
+			<header>
+				<h1>Sorting Visualizer</h1>
+			</header>
+			<main>
+				<div class="btn-selections">
+					<ul id="algorithms">
+						<button>Quicksort</button>
+						<button>Bubble Sort</button>
+						<button>Insertion Sort</button>
+						<button>Merge Sort</button>
+						<button>Selection Sort</button>
+						<button>Counting Sort</button>
+						<button>Radix Sort</button>
+						<button>Bucket Sort</button>
+						<button>Tim Sort</button>
+						<button>Heap Sort</button>
+					</ul>
+
+					<div class="card-adjustment-btns">
+						<button>Shuffle</button>
+						<button>Size</button>
+						<button>Speed</button>
+					</div>
+				</div>
+
+				<div id="bar-container"></div>
+			</main>
+		</div>
+		<script type="module" src="/src/main.js"></script>
+	</body>
 </html>
