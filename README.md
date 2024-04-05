@@ -1,6 +1,6 @@
 # Sorting Visualizer
 
-Sorting algorithm visualization tool to display various sorting algorithms with a list of bars so you can visually see how they work in real-time.
+Sorting algorithm visualization tool to illustrate and compare the mechanics and efficiency of various sorting algorithms in real-time. This tool allows you to change the algorithm, adjust the number of items in the dataset between 1 and 1,000 and change the speed at which the algorithm executes between 1ms and 1000ms.
 
 ## Live Demo
 
