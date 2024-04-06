@@ -2,31 +2,54 @@
 <html lang="en">
 	<head>
 		<meta charset="UTF-8" />
-		<link rel="icon" type="image/svg+xml" href="" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.png" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>Sorting Visualizer</title>
 	</head>
 	<body>
 		<div id="app">
+			<div id="background"></div>
 			<header>
 				<h1>Sorting Visualizer</h1>
 			</header>
 			<main>
 				<div class="btn-selections">
 					<div class="algorithms">
-						<select id="algorithm-selections">
-							<option value="Quicksort">Quicksort</option>
-							<option value="Bubble Sort">Bubble Sort</option>
-							<option value="Insertion Sort">Insertion Sort</option>
-							<option value="Merge Sort">Merge Sort</option>
-							<option value="Selection Sort">Selection Sort</option>
-							<option value="Counting Sort">Counting Sort</option>
-							<option value="Radix Sort">Radix Sort</option>
-							<option value="Bucket Sort">Bucket Sort</option>
-							<option value="Tim Sort">Tim Sort</option>
-							<option value="Heap Sort">Heap Sort</option>
-						</select>
+						<div style="display: flex; flex-direction: column; position: relative">
+							<div id="select-algorithm">
+								<p>Quicksort</p>
+								<span
+									><svg
+										xmlns="http://www.w3.org/2000/svg"
+										fill="none"
+										viewBox="0 0 24 24"
+										stroke-width="1.5"
+										stroke="#000"
+									>
+										<path
+											stroke-linecap="round"
+											stroke-linejoin="round"
+											d="m19.5 8.25-7.5 7.5-7.5-7.5"
+										/>
+									</svg>
+								</span>
+							</div>
+							<div class="algorithm-options">
+								<div class="option" role="button">Quicksort</div>
+								<div class="option" role="button">Bubble Sort</div>
+								<div class="option" role="button">Insertion Sort</div>
+								<div class="option" role="button">Merge Sort</div>
+								<div class="option" role="button">Selection Sort</div>
+								<div class="option" role="button">Counting Sort</div>
+								<div class="option" role="button">Radix Sort</div>
+								<div class="option" role="button">Bucket Sort</div>
+								<div class="option" role="button">Tim Sort</div>
+								<div class="option" role="button">Heap Sort</div>
+							</div>
+						</div>
+
 						<button id="visualize-btn">Visualize Quicksort</button>
+						<button id="shuffle-btn">Shuffle</button>
 					</div>
 
 					<div class="customization-btns">
@@ -39,8 +62,6 @@
 							<label for="speed-slider">Speed: <span id="speed-value">50ms</span></label>
 							<input type="range" id="speed-slider" min="1" max="1000" value="50" step="1" />
 						</div>
-
-						<button id="shuffle-btn">Shuffle</button>
 					</div>
 				</div>
 

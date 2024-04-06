@@ -1,4 +1,4 @@
-$background: #1f1f1f;
+$background: #161616;
 $primary: #f4f4f4;
 $secondary: #000;
 $tertiary: #199fff;
@@ -11,16 +11,55 @@ button {
 	border-radius: 0.4rem;
 	cursor: pointer;
 	font-weight: bold;
+	transition: all 0.2s;
+
+	&:hover {
+		opacity: 90%;
+	}
 }
 
 #app {
+	position: relative;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 	height: 100vh;
 	background-color: $background;
 	width: 100vw;
-	box-shadow: 0 -50px 20px rgba(0, 0, 0, 1);
+}
+
+// add grid as background
+#background {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-image: linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+		linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+	background-size: 5vw 5vw;
+	z-index: 0;
+
+	// adds vignette to page
+	&::before {
+		content: "";
+		position: fixed;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		background-image: radial-gradient(ellipse at center, transparent 80%, rgba(0, 0, 0, 0.2)),
+			radial-gradient(ellipse at center, transparent 90%, rgba(10, 10, 10, 0.4));
+		pointer-events: none;
+	}
+
+	@media only screen and (min-width: 768px) {
+		background-size: 3vw 3vw;
+	}
+
+	@media only screen and (min-width: 1200px) {
+		background-size: 2vw 2vw;
+	}
 }
 
 header {
@@ -28,9 +67,11 @@ header {
 	justify-content: center;
 	align-items: center;
 	padding: 1rem;
+	z-index: 1;
 }
 
 main {
+	z-index: 1;
 	flex: 1;
 	display: flex;
 	flex-direction: column;
@@ -51,27 +92,90 @@ main {
 			display: flex;
 			gap: 1rem;
 
-			#algorithm-selections {
+			#select-algorithm {
 				display: flex;
-				color: $secondary;
+				align-items: center;
+				justify-content: space-between;
 				gap: 1rem;
-
-				padding: 0.6rem 1rem 0.6rem 1rem;
 				border-radius: 0.4rem;
 				cursor: pointer;
 				font-weight: bold;
-				border: none;
-				outline: none;
+				background-color: $primary;
+				padding: 0.6rem 1rem 0.6rem 1rem;
 
-				option {
+				&:hover {
+					background-color: rgba($color: $primary, $alpha: 0.9);
+				}
+
+				p {
 					color: $secondary;
 				}
+
+				// down arrow
+				span {
+					display: flex;
+					align-items: center;
+
+					svg {
+						width: 1rem;
+					}
+				}
+			}
+
+			.algorithm-options {
+				color: $secondary;
+				display: flex;
+				flex-direction: column;
+				position: absolute;
+				top: 3rem;
+				left: 0;
+				background-color: $primary;
+				border-radius: 0.4rem;
+				white-space: nowrap;
+				overflow: hidden;
+				transition: all 0.2s ease;
+				visibility: hidden;
+				transform: translateY(-10px);
+				opacity: 0;
+
+				.option {
+					color: $secondary;
+					cursor: pointer;
+					font-weight: bold;
+					padding: 0.4rem 1rem 0.4rem 1rem;
+					transition: all 0.1s;
+					overflow: hidden;
+
+					&:hover {
+						background-color: $tertiary;
+						color: $primary;
+					}
+				}
+			}
+
+			.algorithm-options.show {
+				visibility: visible;
+				opacity: 1;
+				transform: translateY(0);
 			}
 		}
 
 		.customization-btns {
 			display: flex;
+			justify-content: flex-end;
 			gap: 1rem;
+			width: 50%;
+
+			// select the slider containers
+			div {
+				flex: 1;
+
+				// select the slider inputs
+				input {
+					width: 100%;
+					margin-top: 0.3rem;
+				}
+			}
 		}
 	}
 
