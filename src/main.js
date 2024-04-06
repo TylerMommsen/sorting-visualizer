@@ -3,6 +3,8 @@ import BubbleSort from "./algorithms/BubbleSort";
 import Shuffle from "./utils/Shuffle";
 import DisplayBars from "./utils/DisplayBars";
 import Quicksort from "./algorithms/Quicksort";
+import InsertionSort from "./algorithms/InsertionSort";
+import MergeSort from "./algorithms/MergeSort";
 
 const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
@@ -95,16 +97,21 @@ visualizeBtn.addEventListener("click", async function () {
 	switch (currentlySelectedAlgorithm) {
 		case "Quicksort":
 			await Quicksort(bars, 0, barsLength - 1);
-			await VisualizeFinal();
 			break;
 		case "Bubble Sort":
 			await BubbleSort(bars);
-			await VisualizeFinal();
+			break;
+		case "Insertion Sort":
+			await InsertionSort(bars, barsLength);
+			break;
+		case "Merge Sort":
+			await MergeSort(bars, 0, barsLength);
 			break;
 		default:
 			return;
 	}
 
+	await VisualizeFinal();
 	algorithmRunning = false;
 	toggleSliderDisabledState(false);
 });
