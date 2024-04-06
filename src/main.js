@@ -24,8 +24,14 @@ function InitBars() {
 // display the final sweep of the full array for a nice visual touch
 async function VisualizeFinal() {
 	for (let i = 0; i < barsLength - 1; i++) {
-		DisplayBars(bars, [i]);
-		await delay(10);
+		if (i - 1 >= 0 && i + 1 < barsLength - 1) {
+			DisplayBars(bars, [i - 1, i, i + 1]);
+		} else if (i - 1 >= 0) {
+			DisplayBars(bars, [i - 1, i]);
+		} else {
+			DisplayBars(bars, [i, i + 1]);
+		}
+		await delay(barsLength < 100 ? 30 : speed);
 	}
 
 	DisplayBars(bars);
