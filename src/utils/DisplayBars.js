@@ -1,3 +1,5 @@
+import { soundOn } from "../main";
+
 // Initialize the Audio Context
 const audioContext = new (window.AudioContext || window.webkitAudioContext)();
 const gainNode = audioContext.createGain();
@@ -60,7 +62,9 @@ export default async function DisplayBars(bars, currentlySwapped) {
 			currBar.style.background = "linear-gradient(to top right, #ff6a00, #ff9143)";
 			const pitchRate = bars[i] / Math.max(...bars) + 0.5;
 			// Play the sound with adjusted pitch
-			playSound(sound, pitchRate);
+			if (soundOn) {
+				playSound(sound, pitchRate);
+			}
 		}
 
 		barContainer.appendChild(currBar);

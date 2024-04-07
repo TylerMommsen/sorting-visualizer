@@ -18,6 +18,7 @@ let bars = [];
 let currentlySelectedAlgorithm = "Quicksort";
 export let speed = 50; // the speed the algorithms execute in milliseconds
 let algorithmRunning = false;
+export let soundOn = true;
 
 // create the bars initially or whenever the user changes the bars length size
 function InitBars() {
@@ -48,6 +49,8 @@ const sizeSlider = document.getElementById("size-slider");
 const visualizeBtn = document.getElementById("visualize-btn");
 const shuffleBtn = document.getElementById("shuffle-btn");
 const speedSlider = document.getElementById("speed-slider");
+const speakerBtnOn = document.querySelector(".speaker-btn-on");
+const speakerBtnOff = document.querySelector(".speaker-btn-off");
 
 // hide or open dropdown list for algorithms
 selectAlgorithmBtn.addEventListener("click", function (event) {
@@ -74,6 +77,28 @@ document.addEventListener("click", function (event) {
 	if (!clickInsideDropdown && algorithmOptions.classList.contains("show")) {
 		algorithmOptions.classList.remove("show");
 	}
+});
+
+speakerBtnOn.addEventListener("click", function () {
+	if (soundOn) {
+		soundOn = false;
+	} else {
+		soundOn = true;
+	}
+
+	speakerBtnOn.classList.toggle("hidden");
+	speakerBtnOff.classList.toggle("hidden");
+});
+
+speakerBtnOff.addEventListener("click", function () {
+	if (!soundOn) {
+		soundOn = true;
+	} else {
+		soundOn = false;
+	}
+
+	speakerBtnOff.classList.toggle("hidden");
+	speakerBtnOn.classList.toggle("hidden");
 });
 
 // disable size slider when algorithm is running

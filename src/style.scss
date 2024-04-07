@@ -12,9 +12,14 @@ button {
 	cursor: pointer;
 	font-weight: bold;
 	transition: all 0.2s;
+	font-size: 1rem;
 
 	&:hover {
-		opacity: 90%;
+		background-color: rgba($color: $tertiary, $alpha: 0.9);
+	}
+
+	&:active {
+		background-color: rgba($color: $tertiary, $alpha: 0.8);
 	}
 }
 
@@ -63,11 +68,26 @@ button {
 }
 
 header {
+	width: 100%;
+	position: relative;
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	padding: 1rem;
 	z-index: 1;
+	z-index: 10;
+
+	&::before {
+		content: "";
+		position: absolute;
+		background-color: $background;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		z-index: -1;
+		box-shadow: 0 10px 20px rgba($color: $background, $alpha: 0.8);
+	}
 }
 
 main {
@@ -82,6 +102,7 @@ main {
 	padding: 1rem 1rem 0 1rem;
 
 	.btn-selections {
+		margin-top: 1rem;
 		display: flex;
 		width: 100%;
 		gap: 1rem;
@@ -105,6 +126,10 @@ main {
 
 				&:hover {
 					background-color: rgba($color: $primary, $alpha: 0.9);
+				}
+
+				&:active {
+					background-color: rgba($color: $primary, $alpha: 0.8);
 				}
 
 				p {
@@ -157,6 +182,15 @@ main {
 				visibility: visible;
 				opacity: 1;
 				transform: translateY(0);
+			}
+
+			.speaker-btn {
+				cursor: pointer;
+				width: 2rem;
+			}
+
+			.speaker-btn.hidden {
+				display: none;
 			}
 		}
 
