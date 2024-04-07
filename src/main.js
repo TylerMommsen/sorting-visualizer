@@ -5,6 +5,8 @@ import DisplayBars from "./utils/DisplayBars";
 import Quicksort from "./algorithms/Quicksort";
 import InsertionSort from "./algorithms/InsertionSort";
 import MergeSort from "./algorithms/MergeSort";
+import SelectionSort from "./algorithms/SelectionSort";
+import RadixSort from "./algorithms/RadixSort";
 
 const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
@@ -17,14 +19,14 @@ let algorithmRunning = false;
 // create the bars initially or whenever the user changes the bars length size
 function InitBars() {
 	for (let i = 1; i <= barsLength; i++) {
-		bars.push((i * 100) / barsLength);
+		bars.push(i);
 	}
 }
 
 // display the final sweep of the full array for a nice visual touch
 async function VisualizeFinal() {
-	for (let i = 0; i < barsLength - 1; i++) {
-		if (i - 1 >= 0 && i + 1 < barsLength - 1) {
+	for (let i = 0; i < barsLength; i++) {
+		if (i - 1 >= 0 && i + 1 < barsLength) {
 			DisplayBars(bars, [i - 1, i, i + 1]);
 		} else if (i - 1 >= 0) {
 			DisplayBars(bars, [i - 1, i]);
@@ -66,7 +68,6 @@ document.addEventListener("click", function (event) {
 		algorithmOptions.contains(targetElement) || selectAlgorithmBtn.contains(targetElement);
 
 	if (!clickInsideDropdown && algorithmOptions.classList.contains("show")) {
-		console.log("ergvihj");
 		algorithmOptions.classList.remove("show");
 	}
 });
@@ -82,7 +83,7 @@ sizeSlider.addEventListener("input", function () {
 	if (!algorithmRunning) {
 		const sizeValue = parseInt(this.value);
 		document.getElementById("size-value").textContent = sizeValue;
-		barsLength = sizeValue + 1;
+		barsLength = sizeValue;
 		bars = [];
 		InitBars();
 		DisplayBars(bars);
@@ -112,6 +113,14 @@ visualizeBtn.addEventListener("click", async function () {
 			break;
 		case "Merge Sort":
 			await MergeSort(bars, 0, barsLength);
+			break;
+		case "Selection Sort":
+			await SelectionSort(bars, barsLength);
+			break;
+		case "Radix Sort":
+			let newBars = await RadixSort(bars);
+			bars = [];
+			bars = [...newBars];
 			break;
 		default:
 			return;

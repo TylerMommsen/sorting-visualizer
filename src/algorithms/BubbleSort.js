@@ -7,7 +7,7 @@ export default async function BubbleSort(bars) {
 	let swapped = false;
 	do {
 		swapped = false;
-		for (let i = 0; i < bars.length - 1; i++) {
+		for (let i = 0; i < bars.length; i++) {
 			if (bars[i - 1] > bars[i]) {
 				swapped = true;
 				[bars[i - 1], bars[i]] = [bars[i], bars[i - 1]];
