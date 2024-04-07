@@ -60,7 +60,7 @@ export default async function DisplayBars(bars, currentlySwapped) {
 			currBar.style.background = "linear-gradient(to top right, #ff6a00, #ff9143)";
 			const pitchRate = bars[i] / Math.max(...bars) + 0.5;
 			// Play the sound with adjusted pitch
-			// playSound(sound, pitchRate);
+			playSound(sound, pitchRate);
 		}
 
 		barContainer.appendChild(currBar);

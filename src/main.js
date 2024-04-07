@@ -7,13 +7,16 @@ import InsertionSort from "./algorithms/InsertionSort";
 import MergeSort from "./algorithms/MergeSort";
 import SelectionSort from "./algorithms/SelectionSort";
 import RadixSort from "./algorithms/RadixSort";
+import BucketSort from "./algorithms/BucketSort";
+import HeapSort from "./algorithms/HeapSort";
+import IsSorted from "./utils/IsSorted";
 
 const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
 let barsLength = 50;
 let bars = [];
 let currentlySelectedAlgorithm = "Quicksort";
-export let speed = 50;
+export let speed = 50; // the speed the algorithms execute in milliseconds
 let algorithmRunning = false;
 
 // create the bars initially or whenever the user changes the bars length size
@@ -62,6 +65,7 @@ algorithmOptions.querySelectorAll("div").forEach(function (option) {
 	});
 });
 
+// close dropdown menu when user clicks anywhere else on screen
 document.addEventListener("click", function (event) {
 	let targetElement = event.target;
 	let clickInsideDropdown =
@@ -100,30 +104,39 @@ speedSlider.addEventListener("input", function () {
 // start the sorting algorithm
 visualizeBtn.addEventListener("click", async function () {
 	algorithmRunning = true;
-	toggleSliderDisabledState(true);
-	switch (currentlySelectedAlgorithm) {
-		case "Quicksort":
-			await Quicksort(bars, 0, barsLength - 1);
-			break;
-		case "Bubble Sort":
-			await BubbleSort(bars);
-			break;
-		case "Insertion Sort":
-			await InsertionSort(bars, barsLength);
-			break;
-		case "Merge Sort":
-			await MergeSort(bars, 0, barsLength);
-			break;
-		case "Selection Sort":
-			await SelectionSort(bars, barsLength);
-			break;
-		case "Radix Sort":
-			let newBars = await RadixSort(bars);
-			bars = [];
-			bars = [...newBars];
-			break;
-		default:
-			return;
+	toggleSliderDisabledState(true); // disable size adjustment slider
+	let isSorted = await IsSorted(bars); // check if the array is already sorted
+	if (!isSorted) {
+		switch (currentlySelectedAlgorithm) {
+			case "Quicksort":
+				await Quicksort(bars, 0, barsLength - 1);
+				break;
+			case "Bubble Sort":
+				await BubbleSort(bars);
+				break;
+			case "Insertion Sort":
+				await InsertionSort(bars, 0, barsLength - 1);
+				break;
+			case "Merge Sort":
+				await MergeSort(bars, 0, barsLength);
+				break;
+			case "Selection Sort":
+				await SelectionSort(bars, barsLength);
+				break;
+			case "Radix Sort":
+				let newBars = await RadixSort(bars);
+				bars = [];
+				bars = [...newBars];
+				break;
+			case "Bucket Sort":
+				await BucketSort(bars);
+				break;
+			case "Heap Sort":
+				await HeapSort(bars);
+				break;
+			default:
+				return;
+		}
 	}
 
 	await VisualizeFinal();
@@ -131,6 +144,7 @@ visualizeBtn.addEventListener("click", async function () {
 	toggleSliderDisabledState(false);
 });
 
+// shuffle the bars/array
 shuffleBtn.addEventListener("click", function () {
 	Shuffle(bars);
 	DisplayBars(bars);

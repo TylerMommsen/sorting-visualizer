@@ -3,10 +3,10 @@ import DisplayBars from "../utils/DisplayBars";
 
 const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
-export default async function InsertionSort(arr, n) {
+export default async function InsertionSort(arr, left, right) {
 	let i, key, j;
 
-	for (i = 1; i < n; i++) {
+	for (i = left + 1; i <= right; i++) {
 		key = arr[i];
 		j = i - 1;
 
