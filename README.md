@@ -28,15 +28,14 @@ Sorting algorithm visualization tool to illustrate and compare the mechanics and
 
 - **Selection Sort** - Divides the input list into two parts: a sorted sublist of items which is built up from left to right at the front (left) of the list, and a sublist of the remaining unsorted items. The algorithm proceeds by finding the smallest (or largest, depending on sorting order) element in the unsorted sublist, exchanging it with the leftmost unsorted element, and moving the sublist boundaries one element to the right.
 
-- **Counting Sort** - Counts the occurrences of each element within a specific range, then calculates the positions of each element starting from the beginning of the sorted array.
-
 - **Radix Sort** - Sorts numbers digit by digit, starting from the least significant digit to the most significant digit. Radix sort uses counting sort as a subroutine to sort.
 
 - **Bucket Sort** - Distributes the elements of an array into a number of buckets. Each bucket is then sorted individually, either using a different sorting algorithm, or by recursively applying the bucket sort algorithm.
 
-- **Tim Sort** - A divide and conquer algorithm that divides the input array into two halves, calls itself for the two halves, and then merges the two sorted halves.
-
 - **Heap Sort** - A hybrid stable sorting algorithm derived from merge sort and insertion sort, designed to perform well on many kinds of real-world data.
+
+## Gif
+![sortingvisualizationgif](https://github.com/TylerMommsen/sorting-visualizer/assets/65496518/e2406e34-9b15-44ce-8139-c5f75798b21b)
 
 ## Development
 
