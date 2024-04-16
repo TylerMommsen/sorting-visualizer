@@ -6,13 +6,17 @@ $tertiary: #199fff;
 @import "reset";
 
 button {
-	padding: 0.6rem 1rem 0.6rem 1rem;
+	padding: 0.4rem 0.6rem 0.4rem 0.6rem;
 	background-color: $tertiary;
 	border-radius: 0.4rem;
 	cursor: pointer;
 	font-weight: bold;
 	transition: all 0.2s;
 	font-size: 1rem;
+
+	@media only screen and (min-width: 992px) {
+		padding: 0.6rem 1rem 0.6rem 1rem;
+	}
 
 	&:hover {
 		background-color: rgba($color: $tertiary, $alpha: 0.9);
@@ -107,11 +111,20 @@ main {
 		width: 100%;
 		gap: 1rem;
 		justify-content: space-between;
-		align-items: center;
+
+		@media only screen and (min-width: 992px) {
+			align-items: center;
+		}
 
 		.algorithms {
 			display: flex;
-			gap: 1rem;
+			flex-direction: column;
+			gap: 0.4rem;
+
+			@media only screen and (min-width: 992px) {
+				flex-direction: row;
+				gap: 1rem;
+			}
 
 			#select-algorithm {
 				display: flex;
@@ -122,7 +135,12 @@ main {
 				cursor: pointer;
 				font-weight: bold;
 				background-color: $primary;
-				padding: 0.6rem 1rem 0.6rem 1rem;
+				font-size: 1rem;
+				padding: 0.4rem 0.6rem 0.4rem 0.6rem;
+
+				@media only screen and (min-width: 992px) {
+					padding: 0.6rem 1rem 0.6rem 1rem;
+				}
 
 				&:hover {
 					background-color: rgba($color: $primary, $alpha: 0.9);
@@ -196,13 +214,21 @@ main {
 
 		.customization-btns {
 			display: flex;
-			justify-content: flex-end;
-			gap: 1rem;
+			flex-direction: column;
+			justify-content: flex-start;
 			width: 50%;
+			gap: 1rem;
+
+			@media only screen and (min-width: 992px) {
+				flex-direction: row;
+				justify-content: flex-end;
+			}
 
 			// select the slider containers
 			div {
-				flex: 1;
+				@media only screen and (min-width: 992px) {
+					flex: 1;
+				}
 
 				// select the slider inputs
 				input {
