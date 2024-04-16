@@ -14,7 +14,7 @@ export default async function BucketSort(arr) {
 
 	// sort individual buckets using insertion sort
 	for (let i = 0; i < n; i++) {
-		InsertionSort(buckets[i], 0, buckets[i].length - 1);
+		await InsertionSort(buckets[i], 0, buckets[i].length - 1);
 	}
 
 	// concatenate all buckets into arr[]
