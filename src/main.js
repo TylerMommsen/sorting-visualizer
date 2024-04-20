@@ -128,6 +128,8 @@ speedSlider.addEventListener("input", function () {
 
 // start the sorting algorithm
 visualizeBtn.addEventListener("click", async function () {
+	if (algorithmRunning) return;
+
 	algorithmRunning = true;
 	toggleSliderDisabledState(true); // disable size adjustment slider
 	let isSorted = await IsSorted(bars); // check if the array is already sorted
@@ -171,6 +173,8 @@ visualizeBtn.addEventListener("click", async function () {
 
 // shuffle the bars/array
 shuffleBtn.addEventListener("click", function () {
+	if (algorithmRunning) return;
+
 	Shuffle(bars);
 	DisplayBars(bars);
 });
